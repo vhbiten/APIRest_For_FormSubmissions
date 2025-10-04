@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <title>HydroLedger</title>
+
+    <link rel="stylesheet" href="./style.css">
+    
+    <!-- Scripts separados por responsabilidade -->
+    <script src="./ui-interactions.js" defer></script>
+    <script src="./form-submission.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Monitoramento Ambiental</h1>
+            <p>Raison Businaro - Engenheiro Responsável</p>
+        </header>
+
+        <main>
+            <!-- Seleção de Categoria -->
+            <div class="category-selection">
+                <h3>Selecione a Categoria de Monitoramento</h3>
+                <div class="category-buttons">
+                    <button type="button" class="category-btn active" data-category="pocos">
+                        Poços de Captação
+                    </button>
+                    <button type="button" class="category-btn" data-category="efluente">
+                        Efluente
+                    </button>
+                    <button type="button" class="category-btn" data-category="cloro">
+                        Cloro Residual Livre
+                    </button>
+                </div>
+            </div>
+
+            <!-- Formulário Principal -->
+            <form class="monitoring-form">
+                <div class="date-section">
+                    <div class="form-group">
+                        <label for="dataColeta">Data da Coleta</label>
+                        <input type="date" id="dataColeta" name="dataColeta" required>
+                    </div>
+                </div>
+
+                <!-- Formulário Poços de Captação -->
+                <div id="form-pocos" class="form-category active">
+                    <div class="pocos-grid">
+                        
+                        <div class="poco-card">
+                            <h3>POÇO 1</h3>
+                            <div class="poco-fields">
+                                <div class="form-group">
+                                    <label for="poco1_hidrometro">Hidrômetro (m³)</label>
+                                    <input type="number" id="poco1_hidrometro" name="poco1_hidrometro" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="poco1_horimetro">Horímetro (horas)</label>
+                                    <input type="number" id="poco1_horimetro" name="poco1_horimetro" 
+                                           step="0.1" min="0" placeholder="0.0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="poco-card">
+                            <h3>POÇO 2</h3>
+                            <div class="poco-fields">
+                                <div class="form-group">
+                                    <label for="poco2_hidrometro">Hidrômetro (m³)</label>
+                                    <input type="number" id="poco2_hidrometro" name="poco2_hidrometro" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="poco2_horimetro">Horímetro (horas)</label>
+                                    <input type="number" id="poco2_horimetro" name="poco2_horimetro" 
+                                           step="0.1" min="0" placeholder="0.0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="poco-card">
+                            <h3>POÇO 3</h3>
+                            <div class="poco-fields">
+                                <div class="form-group">
+                                    <label for="poco3_hidrometro">Hidrômetro (m³)</label>
+                                    <input type="number" id="poco3_hidrometro" name="poco3_hidrometro" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="poco3_horimetro">Horímetro (horas)</label>
+                                    <input type="number" id="poco3_horimetro" name="poco3_horimetro" 
+                                           step="0.1" min="0" placeholder="0.0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário Efluente -->
+                <div id="form-efluente" class="form-category">
+                    <div class="efluente-grid">
+                        <div class="measurement-card">
+                            <h3>Vazão</h3>
+                            <div class="poco-fields">
+                                <div class="form-group">
+                                    <label for="vazao1">Vazão 1 (m³/h)</label>
+                                    <input type="number" id="vazao1" name="vazao1" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="vazao2">Vazão 2 (m³/h)</label>
+                                    <input type="number" id="vazao2" name="vazao2" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="vazao3">Vazão 3 (m³/h)</label>
+                                    <input type="number" id="vazao3" name="vazao3" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="measurement-card">
+                            <h3>Parâmetros Físico-Químicos</h3>
+                            <div class="poco-fields">
+                                <div class="form-group">
+                                    <label for="ph">pH</label>
+                                    <input type="number" id="ph" name="ph" 
+                                           step="0.1" min="0" max="14" placeholder="7.0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="temperatura">Temperatura (°C)</label>
+                                    <input type="number" id="temperatura" name="temperatura" 
+                                           step="0.1" placeholder="25.0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="condutividade">Condutividade (µs)</label>
+                                    <input type="number" id="condutividade" name="condutividade" 
+                                           step="0.1" min="0" placeholder="0.0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sd30">SD30 (ml/l)</label>
+                                    <input type="number" id="sd30" name="sd30" 
+                                           step="0.1" min="0" placeholder="0.0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário Cloro Residual Livre -->
+                <div id="form-cloro" class="form-category">
+                    <div class="cloro-grid">
+                        <div class="measurement-card">
+                            <h3>Pontos de Coleta</h3>
+                            <div class="poco-fields">
+                                <div class="form-group">
+                                    <label for="saida_tratamento">Saída do Tratamento (mg/L)</label>
+                                    <input type="number" id="saida_tratamento" name="saida_tratamento" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cozinha">Cozinha (mg/L)</label>
+                                    <input type="number" id="cozinha" name="cozinha" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bebedouro1">Bebedouro 1 (mg/L)</label>
+                                    <input type="number" id="bebedouro1" name="bebedouro1" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bebedouro2">Bebedouro 2 (mg/L)</label>
+                                    <input type="number" id="bebedouro2" name="bebedouro2" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bebedouro3">Bebedouro 3 (mg/L)</label>
+                                    <input type="number" id="bebedouro3" name="bebedouro3" 
+                                           step="0.01" min="0" placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Registrar Dados
+                </button>
+            </form>
+
+            <div class="notification" style="display: none;">
+                <span></span>
+            </div>
+        </main>
+
+        <footer>
+            <p>* Data da coleta é obrigatória | Registros salvos localmente no navegador</p>
+        </footer>
+    </div>
+</body>
+
+</html>
