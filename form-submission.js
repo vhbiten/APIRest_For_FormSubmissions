@@ -20,9 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.monitoring-form');
     if (form) {
         form.addEventListener("submit", handleSubmit);
-        console.log('Form Submission carregado com sucesso!');
-    } else {
-        console.error('Formulário não encontrado!');
     }
 });
 

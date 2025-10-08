@@ -7,11 +7,7 @@
     <link rel="icon" href="assets/favicon.png" type="image/png">
     <title>HydroLedger</title>
 
-    <link rel="stylesheet" href="styles.css">
-    
-    
-    <script src="./ui-interactions.js" defer></script>
-    <script src="./form-submission.js" defer></script>
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
@@ -39,7 +35,7 @@
             </div>
 
             <!-- Selecionar data da coleta -->
-            <form class="monitoring-form">
+            <form class="monitoring-form form-layout">
                 <div class="date-section">
                     <div class="form-group">
                         <label for="dataColeta">Data da Coleta</label>
@@ -51,9 +47,9 @@
                 <div id="form-pocos" class="form-category active">
                     <div class="pocos-grid">
                         
-                        <div class="poco-card">
+                        <div class="form-card">
                             <h3>POÇO 1</h3>
-                            <div class="poco-fields">
+                            <div class="form-fields">
                                 <div class="form-group">
                                     <label for="poco1_hidrometro">Hidrômetro (m³)</label>
                                     <input type="number" id="poco1_hidrometro" name="poco1_hidrometro" 
@@ -67,9 +63,9 @@
                             </div>
                         </div>
 
-                        <div class="poco-card">
+                        <div class="form-card">
                             <h3>POÇO 2</h3>
-                            <div class="poco-fields">
+                            <div class="form-fields">
                                 <div class="form-group">
                                     <label for="poco2_hidrometro">Hidrômetro (m³)</label>
                                     <input type="number" id="poco2_hidrometro" name="poco2_hidrometro" 
@@ -83,9 +79,9 @@
                             </div>
                         </div>
 
-                        <div class="poco-card">
+                        <div class="form-card">
                             <h3>POÇO 3</h3>
-                            <div class="poco-fields">
+                            <div class="form-fields">
                                 <div class="form-group">
                                     <label for="poco3_hidrometro">Hidrômetro (m³)</label>
                                     <input type="number" id="poco3_hidrometro" name="poco3_hidrometro" 
@@ -104,9 +100,9 @@
                 <!-- Efluente -->
                 <div id="form-efluente" class="form-category">
                     <div class="efluente-grid">
-                        <div class="measurement-card">
+                        <div class="form-card">
                             <h3>Vazão</h3>
-                            <div class="poco-fields">
+                            <div class="form-fields">
                                 <div class="form-group">
                                     <label for="vazao1">Vazão 1 (m³/h)</label>
                                     <input type="number" id="vazao1" name="vazao1" 
@@ -125,9 +121,9 @@
                             </div>
                         </div>
 
-                        <div class="measurement-card">
+                        <div class="form-card">
                             <h3>Parâmetros Físico-Químicos</h3>
-                            <div class="poco-fields">
+                            <div class="form-fields">
                                 <div class="form-group">
                                     <label for="ph">pH</label>
                                     <input type="number" id="ph" name="ph" 
@@ -156,9 +152,9 @@
                 <!-- Cloro Residual Livre -->
                 <div id="form-cloro" class="form-category">
                     <div class="cloro-grid">
-                        <div class="measurement-card">
+                        <div class="form-card">
                             <h3>Pontos de Coleta</h3>
-                            <div class="poco-fields">
+                            <div class="form-fields">
                                 <div class="form-group">
                                     <label for="saida_tratamento">Saída do Tratamento (mg/L)</label>
                                     <input type="number" id="saida_tratamento" name="saida_tratamento" 
@@ -203,6 +199,9 @@
             <p> Desenvolvido por Victor Bitencourt</p>
         </footer>
     </div>
+
+    <script src="./ui-interactions.js" defer></script>
+    <script src="./form-submission.js" defer></script>
 </body>
 
 </html>
