@@ -7,9 +7,9 @@
     <link rel="icon" href="assets/favicon.png" type="image/png">
     <title>HydroLedger</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="styles.css">
     
-    <!-- Scripts separados por responsabilidade -->
+    
     <script src="./ui-interactions.js" defer></script>
     <script src="./form-submission.js" defer></script>
 </head>
@@ -22,7 +22,7 @@
         </header>
 
         <main>
-            <!-- Seleção de Categoria -->
+            <!-- Menu de categorias -->
             <div class="category-selection">
                 <h3>Selecione a Categoria de Monitoramento</h3>
                 <div class="category-buttons">
@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <!-- Formulário Principal -->
+            <!-- Selecionar data da coleta -->
             <form class="monitoring-form">
                 <div class="date-section">
                     <div class="form-group">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <!-- Formulário Poços de Captação -->
+                <!-- Poços de Captação -->
                 <div id="form-pocos" class="form-category active">
                     <div class="pocos-grid">
                         
@@ -101,7 +101,7 @@
                     </div>
                 </div>
 
-                <!-- Formulário Efluente -->
+                <!-- Efluente -->
                 <div id="form-efluente" class="form-category">
                     <div class="efluente-grid">
                         <div class="measurement-card">
@@ -153,7 +153,7 @@
                     </div>
                 </div>
 
-                <!-- Formulário Cloro Residual Livre -->
+                <!-- Cloro Residual Livre -->
                 <div id="form-cloro" class="form-category">
                     <div class="cloro-grid">
                         <div class="measurement-card">
@@ -200,7 +200,7 @@
         </main>
 
         <footer>
-            <p>* Data da coleta é obrigatória | Registros salvos localmente no navegador</p>
+            <p> Desenvolvido por Victor Bitencourt</p>
         </footer>
     </div>
 </body>

@@ -1,16 +1,16 @@
 // Função para alternar entre categorias
 function switchCategory(event) {
-    const allButtons = document.querySelectorAll('.category-btn');
-    const allForms = document.querySelectorAll('.form-category');
+    const buttons = document.querySelectorAll('.category-btn');
+    const forms = document.querySelectorAll('.form-category');
 
-    allButtons.forEach(btn => {
+    buttons.forEach(btn => {
         btn.classList.remove('active');
     });
     
     event.target.classList.add('active');
 
     // Esconder todos os formulários
-    allForms.forEach(form => {
+    forms.forEach(form => {
         form.classList.remove('active');
     });
     
@@ -47,7 +47,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryButtons = document.querySelectorAll('.category-btn');
     categoryButtons.forEach(button => {
         button.addEventListener('click', switchCategory);
-    });
-    
-    console.log('UI Interactions carregado com sucesso!');
+    })
 });
