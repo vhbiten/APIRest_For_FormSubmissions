@@ -1,6 +1,5 @@
 
 /* 
-Lógica de execução:
 1. Configurações da API
 2. Inicialização dos eventos (DOMContentLoaded)
 3. Gerenciamento do envio (handleSubmit)
@@ -115,7 +114,7 @@ async function sendToGoogleSheets(data) {
 
         if (response.ok) {
             const responseData = await response.text();
-            showNotification('Dados enviados com sucesso para a planilha!', 'success');
+            showNotification('Dados enviados com sucesso!', 'success');
             // Limpar formulário após envio bem-sucedido
             document.querySelector('.monitoring-form').reset();
         } else {
@@ -125,6 +124,6 @@ async function sendToGoogleSheets(data) {
         }
     } catch (error) {
         console.error('Erro ao enviar dados:', error);
-        showNotification('Erro ao enviar dados. Verifique o console para mais detalhes.', 'error');
+        showNotification('Erro ao enviar dados.', 'error');
     }
 }
