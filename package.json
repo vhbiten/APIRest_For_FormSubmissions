@@ -1,0 +1,22 @@
+{
+  "name": "hydroledger",
+  "version": "1.0.0",
+  "description": "API REST para a aplicação",
+  "main": "./src/server.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhbiten/HydroLedger.git"
+  },
+  "keywords": [],
+  "author": "Victor Bitencourt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vhbiten/HydroLedger/issues"
+  },
+  "homepage": "https://github.com/vhbiten/HydroLedger#readme",
+  "devDependencies": {
+    "@types/node": "20.14",
+    "typescript": "^5.5.4"
+  }
+}
