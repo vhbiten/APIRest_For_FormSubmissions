@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { AppError } from "../utils/AppError"
 
 
 class SubmissionController { 
@@ -27,8 +28,6 @@ remove - DELETE (deletar um registro)
     }
 
     create_FormPocos(request: Request, response: Response) {
-
-        throw new Error("Erro ao tentar submeter o formulário!")
 
         const {
             poco1_hidrometro,  poco1_horimetro,
