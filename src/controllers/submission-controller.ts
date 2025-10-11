@@ -27,6 +27,9 @@ remove - DELETE (deletar um registro)
     }
 
     create_FormPocos(request: Request, response: Response) {
+
+        throw new Error("Erro ao tentar submeter o formulário!")
+
         const {
             poco1_hidrometro,  poco1_horimetro,
             poco2_hidrometro, poco2_horimetro,
