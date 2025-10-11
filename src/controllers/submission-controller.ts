@@ -28,14 +28,35 @@ remove - DELETE (deletar um registro)
     }
 
     create_FormPocos(request: Request, response: Response) {
-
         const {
-            poco1_hidrometro,  poco1_horimetro,
+            poco1_hidrometro, poco1_horimetro,
             poco2_hidrometro, poco2_horimetro,
             poco3_hidrometro, poco3_horimetro
         } = request.body
 
-        response.status(201).send(`###POCO 1### HD: ${poco1_hidrometro} e HR: ${poco1_horimetro}`)
+        // Validação: cada par de campos deve estar completo ou vazio
+        if ((poco1_hidrometro && !poco1_horimetro) || (!poco1_hidrometro && poco1_horimetro)) {
+            throw new AppError("POÇO 1: Preencha ambos os campos", 400)
+        }
+        if ((poco2_hidrometro && !poco2_horimetro) || (!poco2_hidrometro && poco2_horimetro)) {
+            throw new AppError("POÇO 2: Preencha ambos os campos", 400)
+        }
+        if ((poco3_hidrometro && !poco3_horimetro) || (!poco3_hidrometro && poco3_horimetro)) {
+            throw new AppError("POÇO 3: Preencha ambos os campos", 400)
+        }
+
+        // Pelo menos um poço deve ser enviado
+        if (!poco1_hidrometro && !poco2_hidrometro && !poco3_hidrometro) {
+            throw new AppError("Envie os registros de pelo menos um poço", 400)
+        }
+
+        // Monta resposta
+        let result = ""
+        if (poco1_hidrometro) result += `POCO 1: HD=${poco1_hidrometro} HR=${poco1_horimetro}`
+        if (poco2_hidrometro) result += `POCO 2: HD=${poco2_hidrometro} HR=${poco2_horimetro}`
+        if (poco3_hidrometro) result += `POCO 3: HD=${poco3_hidrometro} HR=${poco3_horimetro}`
+
+        response.status(201).send(result)
     }
 }
 
