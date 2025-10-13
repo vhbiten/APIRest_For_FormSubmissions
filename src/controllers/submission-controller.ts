@@ -1,5 +1,4 @@
 import { Request, Response } from "express"
-import { AppError } from "../utils/app-error"
 import { z } from "zod"
 
 
@@ -28,7 +27,7 @@ remove - DELETE (deletar um registro)
         response.send("FORMULÁRIO DE CLORO RESIDUAL LIVRE")
     }
 
-    create_FormPocos(request: Request, response: Response) {
+    async create_FormPocos(request: Request, response: Response) {
         // Schema: todos os campos são opcionais, mas se um do par existir, o outro é obrigatório
         const bodySchema = z.object({
             poco1_hidrometro: z.number().optional(),

@@ -1,7 +1,7 @@
 {
   "name": "hydroledger",
   "version": "1.0.0",
-  "description": "API REST para a aplicação",
+  "description": "API REST para a gerenciar os dados do HydroLedger",
   "main": "./src/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts"
@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "express": "^4.19.2",
+    "knex": "^3.1.0",
+    "sqlite3": "^5.1.7",
     "zod": "^3.23.8"
   }
 }
