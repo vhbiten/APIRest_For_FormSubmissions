@@ -1,7 +1,6 @@
 export default {
     client: "sqlite3",
     connection: {
-        // knexfile is inside src/, so database file path is relative to src/
         filename: "./database/database.db",
     },
     pool: {
@@ -13,7 +12,6 @@ export default {
     useNullAsDefault: true,
     migrations: {
         extension: "ts",
-        // migrations dir relative to src/
         directory: "./database/migrations",
     },
     seeds: {

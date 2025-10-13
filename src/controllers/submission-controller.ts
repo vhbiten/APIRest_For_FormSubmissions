@@ -27,9 +27,10 @@ remove - DELETE (deletar um registro)
         response.send("FORMULÁRIO DE CLORO RESIDUAL LIVRE")
     }
 
-    async create_FormPocos(request: Request, response: Response) {
+    async pocos(request: Request, response: Response) {
         // Schema: todos os campos são opcionais, mas se um do par existir, o outro é obrigatório
         const bodySchema = z.object({
+            dataColeta: z.string().min(1, "Data da coleta é obrigatória"),
             poco1_hidrometro: z.number().optional(),
             poco1_horimetro: z.number().optional(),
             poco2_hidrometro: z.number().optional(),
@@ -54,10 +55,13 @@ remove - DELETE (deletar um registro)
 
 
         //"parse" verifica e valida o schema anterior.
-        const { poco1_hidrometro, poco1_horimetro, poco2_hidrometro, poco2_horimetro, poco3_hidrometro, poco3_horimetro } = bodySchema.parse(request.body)
+        const { dataColeta, poco1_hidrometro, poco1_horimetro, poco2_hidrometro, poco2_horimetro, poco3_hidrometro, poco3_horimetro } = bodySchema.parse(request.body)
+
+        // Converter data do formato ISO (YYYY-MM-DD) para Date object
+        const dataColetaFormatted = new Date(dataColeta + 'T00:00:00')
 
         // Monta resposta
-        let result = ""
+        let result = `Data: ${dataColetaFormatted.toLocaleDateString('pt-BR')} - `
         if (poco1_hidrometro) result += `POCO 1: HD=${poco1_hidrometro} HR=${poco1_horimetro} `
         if (poco2_hidrometro) result += `POCO 2: HD=${poco2_hidrometro} HR=${poco2_horimetro} `
         if (poco3_hidrometro) result += `POCO 3: HD=${poco3_hidrometro} HR=${poco3_horimetro}`

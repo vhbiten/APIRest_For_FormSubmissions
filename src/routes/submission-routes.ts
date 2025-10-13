@@ -4,6 +4,6 @@ import { SubmissionController } from "../controllers/submission-controller"
 const submissionRoutes = Router()
 const submissionController = new SubmissionController()
 
-submissionRoutes.post("/", submissionController.create_FormPocos)
+submissionRoutes.post("/", submissionController.pocos)
 
 export { submissionRoutes }
