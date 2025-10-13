@@ -4,7 +4,8 @@
   "description": "API REST para a gerenciar os dados do HydroLedger",
   "main": "./src/server.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "knex": "knex --knexfile src/knexfile.ts"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "20.14",
+    "ts-node": "^10.9.2",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4"
   },
