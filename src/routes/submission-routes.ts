@@ -4,6 +4,8 @@ import { SubmissionController } from "../controllers/submission-controller"
 const submissionRoutes = Router()
 const submissionController = new SubmissionController()
 
-submissionRoutes.post("/", submissionController.pocos)
+submissionRoutes.post("/pocos", submissionController.create_pocos)
+submissionRoutes.post("/efluentes", submissionController.create_efluentes)
+submissionRoutes.post("/cloro-residual", submissionController.create_cloroResidual)
 
 export { submissionRoutes }

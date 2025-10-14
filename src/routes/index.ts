@@ -8,7 +8,7 @@ import { submissionRoutes } from "./submission-routes"
 const routes = Router()
 
 routes.use("/home", homeRoutes)
-routes.use("/home/pocosdecaptacao", submissionRoutes)
+routes.use("/api", submissionRoutes)
 
 
 export { routes }

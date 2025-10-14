@@ -5,11 +5,11 @@ const submissionController = new SubmissionController()
 
 homeRoutes.get("/", submissionController.show_menu)
 
-homeRoutes.get("/pocoscaptacao", submissionController.show_FormPocos)
+homeRoutes.get("/pocoscaptacao", submissionController.show_pocos)
 
-homeRoutes.get("/efluentes", submissionController.show_FormEfluentes)
+homeRoutes.get("/efluentes", submissionController.show_efluentes)
 
-homeRoutes.get("/clororesidual", submissionController.show_FormCloroResidual)
+homeRoutes.get("/clororesidual", submissionController.show_cloroResidual)
 
 
 export { homeRoutes }
