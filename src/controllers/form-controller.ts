@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express"
 import { knex } from "@/database/knex"
-import { z } from "zod"
+import { number, z } from "zod"
+import { AppError } from "@/utils/app-error"
 
 
 class SubmissionController { 
@@ -12,10 +13,92 @@ update - PUT (atualizar um registro)
 remove - DELETE (deletar um registro)
 */
 
-    show_menu(request: Request, response: Response) {
-        return response.send("PÁGINA INICIAL - POÇOS // EFLUENTES  // CLORO RESIDUAL // GERENCIAR")
+    //### REMOVES ###
+    async remove_pocos(request: Request, response: Response, next: NextFunction) {
+        try {
+            //garantindo que o "id" é um número
+            const id = z
+            .string()
+            .transform((value) => Number(value))
+            .refine((value) => !isNaN(value), { message: "ID inválido" })
+            .parse(request.params.id)
+
+            // registro existe?
+            const poco = await knex<PocoRepository>("pocos")
+            .select()
+            .where({ id })
+            .first()
+
+            if (!poco) { 
+                throw new AppError("Registro não encontrado", 404)
+            }
+
+            await knex<PocoRepository>("pocos").delete().where({ id })
+
+            return response.json()
+        }
+        catch (error) {
+            next(error)
+        }
     }
 
+    async remove_efluentes(request: Request, response: Response, next: NextFunction) {
+        try {
+            //garantindo que o "id" é um número
+            const id = z
+            .string()
+            .transform((value) => Number(value))
+            .refine((value) => !isNaN(value), { message: "ID inválido" })
+            .parse(request.params.id)
+
+            // registro existe?
+            const efluente = await knex<EfluenteRepository>("efluentes")
+            .select()
+            .where({ id })
+            .first()
+
+            if (!efluente) { 
+                throw new AppError("Registro não encontrado", 404)
+            }
+
+            await knex<EfluenteRepository>("efluentes").delete().where({ id })
+
+            return response.json()
+        }
+        catch (error) {
+            next(error)
+        }
+    }
+
+    async remove_cloroResidual(request: Request, response: Response, next: NextFunction) {
+        try {
+            //garantindo que o "id" é um número
+            const id = z
+            .string()
+            .transform((value) => Number(value))
+            .refine((value) => !isNaN(value), { message: "ID inválido" })
+            .parse(request.params.id)
+
+            // registro existe?
+            const cloroResidual = await knex<CloroResidualRepository>("cloro_residual")
+            .select()
+            .where({ id })
+            .first()
+
+            if (!cloroResidual) { 
+                throw new AppError("Registro não encontrado", 404)
+            }
+
+            await knex<CloroResidualRepository>("cloro_residual").delete().where({ id })
+
+            return response.json()
+        }
+        catch (error) {
+            next(error)
+        }
+    }
+
+    //### SHOW ###
     async show_pocos(request: Request, response: Response, next: NextFunction) {
         try {
 
@@ -102,6 +185,8 @@ remove - DELETE (deletar um registro)
         }
     }
 
+
+    //### CREATES ###
     async create_pocos(request: Request, response: Response) {
         try {
             // Schema: todos os campos são opcionais, mas se um do par existir, o outro é obrigatório
