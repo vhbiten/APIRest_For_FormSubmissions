@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { SubmissionController } from "../controllers/submission-controller"
+import { SubmissionController } from "../controllers/form-controller"
 
 const submissionRoutes = Router()
 const submissionController = new SubmissionController()

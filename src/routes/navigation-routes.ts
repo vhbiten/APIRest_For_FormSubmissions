@@ -1,15 +1,15 @@
 import { Router } from "express"
-import { SubmissionController } from "../controllers/submission-controller"
-const homeRoutes = Router()
+import { SubmissionController } from "../controllers/form-controller"
+const navigationRoutes = Router()
 const submissionController = new SubmissionController()
 
-homeRoutes.get("/", submissionController.show_menu)
+navigationRoutes.get("/", submissionController.show_menu)
 
-homeRoutes.get("/pocoscaptacao", submissionController.show_pocos)
+navigationRoutes.get("/table/pocos", submissionController.show_pocos)
 
-homeRoutes.get("/efluentes", submissionController.show_efluentes)
+navigationRoutes.get("/table/efluentes", submissionController.show_efluentes)
 
-homeRoutes.get("/clororesidual", submissionController.show_cloroResidual)
+navigationRoutes.get("/table/cloro-residual", submissionController.show_cloroResidual)
 
 
-export { homeRoutes }
+export { navigationRoutes }

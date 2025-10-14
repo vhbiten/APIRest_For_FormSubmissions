@@ -1,4 +1,4 @@
-import { Request, Response } from "express"
+import { Request, Response, NextFunction } from "express"
 import { knex } from "@/database/knex"
 import { z } from "zod"
 
@@ -16,16 +16,90 @@ remove - DELETE (deletar um registro)
         return response.send("PÁGINA INICIAL - POÇOS // EFLUENTES  // CLORO RESIDUAL // GERENCIAR")
     }
 
-    show_pocos(request: Request, response: Response) {
-        return response.send("FORMULÁRIO DOS POÇOS DE CAPTAÇÃO")
+    async show_pocos(request: Request, response: Response, next: NextFunction) {
+        try {
+
+            const { pocoNumero, dataColeta } = request.query
+            
+            const query = knex<PocoRepository>("pocos").select()
+
+            // Se pocoNumero foi informado, filtra por ele
+            if (pocoNumero) {
+                query.where("pocoNumero", pocoNumero)
+            }
+
+            // Se dataColeta foi informada, filtra por ela
+            if (dataColeta) {
+                query.where("dataColeta", dataColeta)
+            }
+
+            const pocos = await query.orderBy("dataColeta")
+
+            // Verifica se tem registro, caso não tenha retorna 404
+            if (pocos.length === 0) {
+                return response.status(404).json({ message: "Nenhum registro encontrado" })
+            }
+
+            return response.json(pocos)
+
+        } catch (error) {
+            
+            next(error)
+        }
     }
     
-    show_efluentes(request: Request, response: Response) {
-        return response.send("FORMULÁRIO DOS EFLUENTES")
+    async show_efluentes(request: Request, response: Response, next: NextFunction) {
+        try {
+
+            const { dataColeta } = request.query
+
+            const query = knex<EfluenteRepository>("efluentes").select()
+
+            // Se dataColeta foi informada, filtra por ela
+            if (dataColeta) {
+                query.where("dataColeta", dataColeta)
+            }
+
+            const efluentes = await query.orderBy("dataColeta")
+
+            // Verifica se tem registro, caso não tenha retorna 404
+            if (efluentes.length === 0) {
+                return response.status(404).json({ message: "Nenhum registro encontrado" })
+            }
+
+            return response.json(efluentes)
+
+        } catch (error) {
+            
+            next(error)
+        }
     }
 
-    show_cloroResidual(request: Request, response: Response) {
-        return response.send("FORMULÁRIO DE CLORO RESIDUAL LIVRE")
+    async show_cloroResidual(request: Request, response: Response, next: NextFunction) {
+        try {
+
+            const { dataColeta } = request.query
+
+            const query = knex<CloroResidualRepository>("cloro_residual").select()
+
+            // Se dataColeta foi informada, filtra por ela
+            if (dataColeta) {
+                query.where("dataColeta", dataColeta)
+            }
+
+            const cloroResidual = await query.orderBy("dataColeta")
+
+            // Verifica se tem registro, caso não tenha retorna 404
+            if (cloroResidual.length === 0) {
+                return response.status(404).json({ message: "Nenhum registro encontrado" })
+            }
+
+            return response.json(cloroResidual)
+
+        } catch (error) {
+            
+            next(error)
+        }
     }
 
     async create_pocos(request: Request, response: Response) {
