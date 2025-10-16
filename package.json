@@ -5,7 +5,9 @@
   "main": "./src/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "knex": "knex --knexfile src/knexfile.ts"
+    "knex": "knex --knexfile src/knexfile.ts",
+    "start": "node dist/server.js",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express"
-import { knex } from "@/database/knex"
+import { knex } from "../database/knex"
 import { number, z } from "zod"
-import { AppError } from "@/utils/app-error"
+import { AppError } from "../utils/app-error"
 
 
 class SubmissionController { 

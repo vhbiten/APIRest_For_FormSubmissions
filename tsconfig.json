@@ -3,17 +3,18 @@
     "target": "ES2022",                     
     "lib": ["ES2023"],
 
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-
     /* Modules */
-    "module": "node16", 
+    "module": "node16",
+    "moduleResolution": "node16",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
 
     /* Type Checking */
     "strict": true,
     "skipLibCheck": true
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
